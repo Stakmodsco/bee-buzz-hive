@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import Bee3D from "./Bee3D";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[80vh] bg-hero flex items-center overflow-hidden">
+      {/* 3D Bee */}
+      <Bee3D />
+      
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-10">
         {/* Hexagon Pattern Background */}
         <div className="absolute inset-0 opacity-5">
           {[...Array(12)].map((_, i) => (
@@ -24,22 +28,16 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Animated Bees */}
-        <div className="bee absolute top-20 left-10 text-4xl animate-fly">🐝</div>
+        {/* Simplified 2D Animated Bees */}
+        <div className="bee absolute top-20 right-10 text-4xl animate-fly opacity-70">🐝</div>
         <div 
-          className="bee absolute top-40 right-20 text-3xl animate-fly" 
-          style={{ animationDelay: '1s', animationDirection: 'reverse' }}
-        >
-          🐝
-        </div>
-        <div 
-          className="bee absolute bottom-32 left-1/4 text-2xl animate-hover"
+          className="bee absolute bottom-32 left-1/4 text-2xl animate-hover opacity-60"
           style={{ animationDelay: '0.5s' }}
         >
           🐝
         </div>
         <div 
-          className="bee absolute top-60 right-1/3 text-3xl animate-fly"
+          className="bee absolute top-60 right-1/3 text-3xl animate-fly opacity-50"
           style={{ animationDelay: '2s' }}
         >
           🐝
@@ -47,7 +45,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] text-bee leading-tight mb-6">
             Welcome to the
