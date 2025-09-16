@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -47,6 +48,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // BuzzWorld custom colors
+        honey: "hsl(var(--honey-yellow))",
+        bee: "hsl(var(--bee-black))",
+        nature: "hsl(var(--nature-green))",
+        pollen: "hsl(var(--pollen-orange))",
+        nectar: "hsl(var(--nectar-amber))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
