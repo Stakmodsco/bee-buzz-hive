@@ -22,87 +22,35 @@ const RealisticBeeModel = () => {
   
   useFrame((state) => {
     if (group.current) {
-      // Enhanced scroll-based movement with more pronounced bee behavior
+      // Smooth scroll-based movement with enhanced bee behavior
       const scrollY = window.scrollY
-      const scrollProgress = scrollY / (document.body.scrollHeight - window.innerHeight)
+      const targetY = scrollY * 0.002
+      const targetX = Math.sin(scrollY * 0.005) * 1.2
+      const targetZ = Math.cos(scrollY * 0.003) * 0.5
       
-      // More dramatic scroll-based positioning
-      const targetY = scrollY * 0.008 - 2 // More vertical movement
-      const targetX = Math.sin(scrollY * 0.01) * 3 // Wider horizontal movement
-      const targetZ = Math.cos(scrollY * 0.008) * 1.5 // More depth movement
-      
-      // Enhanced GSAP animations with scroll-responsive speed
+      // Smooth GSAP animations
       gsap.to(group.current.position, {
         x: targetX,
         y: targetY,
         z: targetZ,
-        duration: 1.5,
+        duration: 2,
         ease: "power2.out"
       })
       
-      // Dynamic bee rotation with scroll influence
-      const rotationIntensity = Math.min(scrollProgress * 2, 1)
+      // Natural bee rotation based on movement
       gsap.to(group.current.rotation, {
-        x: Math.sin(scrollY * 0.008) * 0.3 * rotationIntensity,
-        y: scrollY * 0.005 + Math.sin(state.clock.elapsedTime * 0.8) * 0.4,
-        z: Math.cos(scrollY * 0.01) * 0.2 * rotationIntensity,
-        duration: 1.5,
+        x: Math.sin(scrollY * 0.004) * 0.1,
+        y: scrollY * 0.003 + Math.sin(state.clock.elapsedTime * 0.5) * 0.2,
+        z: Math.cos(scrollY * 0.005) * 0.1,
+        duration: 2,
         ease: "power2.out"
       })
       
-      // Enhanced floating motion with scroll influence
-      const floatIntensity = 0.05 + (scrollProgress * 0.03)
-      group.current.position.y += Math.sin(state.clock.elapsedTime * 2) * floatIntensity
-      
-      // Wing flutter effect based on scroll speed
-      const scrollSpeed = Math.abs(scrollY - (group.current.userData.lastScrollY || 0))
-      group.current.userData.lastScrollY = scrollY
-      
-      if (scrollSpeed > 1) {
-        group.current.scale.setScalar(0.8 + Math.sin(state.clock.elapsedTime * 15) * 0.05)
-      }
+      // Gentle floating motion
+      group.current.position.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.02
     }
   })
   
-  // Apply BuzzWorld color scheme to bee materials
-  useEffect(() => {
-    if (scene) {
-      scene.traverse((child) => {
-        if ((child as THREE.Mesh).isMesh && (child as THREE.Mesh).material) {
-          const mesh = child as THREE.Mesh
-          // Clone material to avoid affecting other instances
-          const material = (mesh.material as THREE.MeshStandardMaterial).clone()
-          
-          // Apply BuzzWorld color theme based on material properties
-          if (material.name?.includes('body') || material.color) {
-            // Bee body - rich black with honey highlights
-            material.color.setHSL(38/360, 0.92, 0.08) // --bee-black
-            material.emissive.setHSL(45/360, 0.98, 0.15) // Subtle honey glow
-          }
-          
-          if (material.name?.includes('wing')) {
-            // Wings - translucent with honey tint
-            material.transparent = true
-            material.opacity = 0.7
-            material.color.setHSL(45/360, 0.98, 0.91) // Light honey color
-          }
-          
-          if (material.name?.includes('stripe') || material.name?.includes('yellow')) {
-            // Yellow stripes - bright honey color
-            material.color.setHSL(45/360, 0.98, 0.51) // --honey-yellow
-            material.emissive.setHSL(45/360, 1.0, 0.1) // Honey glow
-          }
-          
-          // Enhanced material properties for better lighting
-          material.metalness = 0.1
-          material.roughness = 0.3
-          
-          mesh.material = material
-        }
-      })
-    }
-  }, [scene])
-
   return (
     <group ref={group} scale={[0.8, 0.8, 0.8]}>
       <primitive object={scene} />
@@ -129,27 +77,27 @@ const RealisticBeeScene = () => {
         }}
         className="w-full h-full"
       >
-        {/* BuzzWorld-themed Lighting Setup */}
-        <ambientLight intensity={0.7} color="hsl(48, 100%, 98%)" />
+        {/* Enhanced Lighting Setup */}
+        <ambientLight intensity={0.6} color="#FFF8DC" />
         <directionalLight 
           position={[10, 10, 5]} 
-          intensity={1.5} 
-          color="hsl(45, 98%, 51%)"
+          intensity={1.2} 
+          color="#FFD700"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
         />
         <pointLight 
           position={[-10, -10, -5]} 
-          intensity={0.6} 
-          color="hsl(122, 39%, 49%)" 
+          intensity={0.8} 
+          color="#87CEEB" 
         />
         <spotLight
           position={[0, 20, 10]}
-          angle={0.4}
+          angle={0.3}
           penumbra={1}
-          intensity={0.8}
-          color="hsl(42, 100%, 70%)"
+          intensity={0.5}
+          color="#FFFACD"
           castShadow
         />
         
