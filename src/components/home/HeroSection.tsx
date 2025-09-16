@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import Bee3D from "./Bee3D";
+import RealisticBeeScene from "./RealisticBee3D";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[80vh] bg-hero flex items-center overflow-hidden">
-      {/* 3D Bee */}
-      <Bee3D />
+      {/* Realistic 3D Bee */}
+      <RealisticBeeScene />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-10">
