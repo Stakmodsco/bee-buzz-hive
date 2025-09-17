@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
+const scrollToNewsletter = () => {
+  const newsletterSection = document.querySelector('#newsletter-section');
+  if (newsletterSection) {
+    newsletterSection.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // If not on home page, navigate to home and then scroll
+    window.location.href = '/#newsletter-section';
+  }
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -40,7 +50,11 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="bg-honey hover:bg-primary/90 text-bee shadow-honey">
+            <Button 
+              variant="glow" 
+              onClick={scrollToNewsletter}
+              className="transform hover:scale-110 transition-all duration-300"
+            >
               Newsletter
             </Button>
           </nav>
@@ -70,7 +84,11 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="default" className="bg-honey hover:bg-primary/90 text-bee shadow-honey w-fit mt-4">
+              <Button 
+                variant="glow" 
+                onClick={scrollToNewsletter}
+                className="w-fit mt-4 transform hover:scale-110 transition-all duration-300"
+              >
                 Newsletter
               </Button>
             </div>

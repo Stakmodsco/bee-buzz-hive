@@ -69,7 +69,7 @@ const Index = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-bee">
+      <section id="newsletter-section" className="py-20 bg-bee">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-4xl font-bold text-background mb-6 font-['Playfair_Display']">
