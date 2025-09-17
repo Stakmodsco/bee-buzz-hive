@@ -25,11 +25,11 @@ const RealisticBeeModel = () => {
         if (child instanceof THREE.Mesh && child.material) {
           const material = child.material as THREE.MeshStandardMaterial
           
-          // Apply realistic bee colors - golden yellow body with black stripes
+          // Apply realistic bee colors - bright yellow body with black stripes
           if (material.name?.toLowerCase().includes('body') || !material.name) {
-            material.color.setHex(0xDAA520) // Golden rod color
-            material.roughness = 0.8
-            material.metalness = 0.1
+            material.color.setHex(0xFFD700) // Bright bee yellow
+            material.roughness = 0.7
+            material.metalness = 0.2
           }
           
           // Black stripes and head
