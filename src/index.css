@@ -183,6 +183,36 @@
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  /* Contact Page 3D Card Animations */
+  .perspective-1000 { 
+    perspective: 1000px; 
+  }
+
+  .card-3d-wrapper { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    transform-style: preserve-3d; 
+    transition: transform 0.7s ease-in-out; 
+  }
+
+  .rotate-y-180 { 
+    transform: rotateY(180deg); 
+  }
+
+  .card-front, .card-back { 
+    backface-visibility: hidden; 
+  }
+
+  .card-back { 
+    transform: rotateY(180deg); 
+  }
+
+  .hexagon-pattern {
+    background-image: radial-gradient(circle at 25px 25px, hsl(var(--honey-yellow) / 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
 }
 
 @layer utilities {
