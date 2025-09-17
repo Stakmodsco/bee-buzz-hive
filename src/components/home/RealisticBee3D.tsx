@@ -18,51 +18,95 @@ const RealisticBeeModel = () => {
       const firstAction = Object.values(actions)[0]
       firstAction?.play()
     }
-  }, [actions])
+    
+    // Apply realistic bee colors to the model
+    if (scene) {
+      scene.traverse((child) => {
+        if (child instanceof THREE.Mesh && child.material) {
+          const material = child.material as THREE.MeshStandardMaterial
+          
+          // Apply realistic bee colors - golden yellow body with black stripes
+          if (material.name?.toLowerCase().includes('body') || !material.name) {
+            material.color.setHex(0xDAA520) // Golden rod color
+            material.roughness = 0.8
+            material.metalness = 0.1
+          }
+          
+          // Black stripes and head
+          if (material.name?.toLowerCase().includes('stripe') || 
+              material.name?.toLowerCase().includes('head') ||
+              material.name?.toLowerCase().includes('black')) {
+            material.color.setHex(0x2C1810) // Dark brown-black
+            material.roughness = 0.9
+            material.metalness = 0.05
+          }
+          
+          // Wings - translucent with slight blue tint
+          if (material.name?.toLowerCase().includes('wing')) {
+            material.color.setHex(0xE6F3FF) // Light blue-white
+            material.transparent = true
+            material.opacity = 0.7
+            material.roughness = 0.1
+            material.metalness = 0.0
+          }
+          
+          material.needsUpdate = true
+        }
+      })
+    }
+  }, [actions, scene])
   
   useFrame((state) => {
     if (group.current) {
-      // Smooth scroll-based movement with enhanced bee behavior
       const scrollY = window.scrollY
-      const targetY = scrollY * 0.002
-      const targetX = Math.sin(scrollY * 0.005) * 1.2
-      const targetZ = Math.cos(scrollY * 0.003) * 0.5
+      const time = state.clock.elapsedTime
       
-      // Smooth GSAP animations
+      // Enhanced side-to-side movement with scroll
+      const sideMovement = Math.sin(scrollY * 0.008) * 2.5 + Math.cos(time * 0.3) * 0.8
+      const verticalMovement = scrollY * 0.003 + Math.sin(time * 1.2) * 0.15
+      const depthMovement = Math.cos(scrollY * 0.006) * 1.2 + Math.sin(time * 0.8) * 0.3
+      
+      // Dynamic angles based on movement direction
+      const rotationX = Math.sin(scrollY * 0.005) * 0.15 + Math.cos(time * 0.7) * 0.05
+      const rotationY = scrollY * 0.004 + sideMovement * 0.1 + Math.sin(time * 0.6) * 0.3
+      const rotationZ = Math.cos(scrollY * 0.007) * 0.2 + Math.sin(time * 0.9) * 0.08
+      
+      // Apply smooth movements
       gsap.to(group.current.position, {
-        x: targetX,
-        y: targetY,
-        z: targetZ,
-        duration: 2,
+        x: sideMovement,
+        y: verticalMovement,
+        z: depthMovement,
+        duration: 1.5,
         ease: "power2.out"
       })
       
-      // Natural bee rotation based on movement
+      // Apply dynamic rotations for realistic flight patterns
       gsap.to(group.current.rotation, {
-        x: Math.sin(scrollY * 0.004) * 0.1,
-        y: scrollY * 0.003 + Math.sin(state.clock.elapsedTime * 0.5) * 0.2,
-        z: Math.cos(scrollY * 0.005) * 0.1,
-        duration: 2,
+        x: rotationX,
+        y: rotationY,
+        z: rotationZ,
+        duration: 1.5,
         ease: "power2.out"
       })
       
-      // Gentle floating motion
-      group.current.position.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.02
+      // Additional subtle floating motion
+      group.current.position.y += Math.sin(time * 2.1) * 0.03
+      group.current.position.x += Math.cos(time * 1.8) * 0.02
     }
   })
   
   return (
-    <group ref={group} scale={[0.8, 0.8, 0.8]}>
+    <group ref={group} scale={[0.9, 0.9, 0.9]}>
       <primitive object={scene} />
     </group>
   )
 }
 
-// Loading fallback component
+// Minimal loading fallback - bee appears almost immediately
 const BeeLoader = () => (
-  <mesh>
-    <sphereGeometry args={[0.5, 16, 16]} />
-    <meshStandardMaterial color="#FFD700" opacity={0.6} transparent />
+  <mesh scale={[0.3, 0.3, 0.3]}>
+    <sphereGeometry args={[0.2, 8, 6]} />
+    <meshStandardMaterial color="#DAA520" opacity={0.8} transparent />
   </mesh>
 )
 
@@ -101,7 +145,7 @@ const RealisticBeeScene = () => {
           castShadow
         />
         
-        {/* Realistic Bee with Suspense */}
+        {/* Realistic Bee - loads immediately with minimal fallback */}
         <Suspense fallback={<BeeLoader />}>
           <RealisticBeeModel />
         </Suspense>
