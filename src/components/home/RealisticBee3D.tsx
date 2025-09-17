@@ -62,14 +62,14 @@ const RealisticBeeModel = () => {
       const time = state.clock.elapsedTime
       
       // Enhanced side-to-side movement with scroll
-      const sideMovement = Math.sin(scrollY * 0.008) * 2.5 + Math.cos(time * 0.3) * 0.8
-      const verticalMovement = scrollY * 0.003 + Math.sin(time * 1.2) * 0.15
-      const depthMovement = Math.cos(scrollY * 0.006) * 1.2 + Math.sin(time * 0.8) * 0.3
+      const sideMovement = Math.sin(scrollY * 0.008) * 3.0 + Math.cos(time * 0.4) * 0.6
+      const verticalMovement = -scrollY * 0.004 + Math.sin(time * 1.2) * 0.12 // Negative to move down with scroll
+      const depthMovement = Math.cos(scrollY * 0.006) * 0.8 + Math.sin(time * 0.8) * 0.4
       
-      // Dynamic angles based on movement direction
-      const rotationX = Math.sin(scrollY * 0.005) * 0.15 + Math.cos(time * 0.7) * 0.05
-      const rotationY = scrollY * 0.004 + sideMovement * 0.1 + Math.sin(time * 0.6) * 0.3
-      const rotationZ = Math.cos(scrollY * 0.007) * 0.2 + Math.sin(time * 0.9) * 0.08
+      // Dynamic angles based on movement direction for realistic turning
+      const rotationX = Math.sin(scrollY * 0.005) * 0.2 + Math.cos(time * 0.7) * 0.08
+      const rotationY = sideMovement * 0.15 + Math.sin(time * 0.6) * 0.25 // Turn based on side movement
+      const rotationZ = Math.cos(scrollY * 0.007) * 0.25 + sideMovement * 0.1 // Banking turns
       
       // Apply smooth movements
       gsap.to(group.current.position, {
