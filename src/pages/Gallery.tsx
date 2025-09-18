@@ -58,7 +58,12 @@ const Gallery = () => {
     : galleryImages.filter(image => image.category === selectedCategory);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen honeycomb-overlay">
+      {/* Floating bees */}
+      <div className="floating-bee" style={{ top: '15%', left: '85%' }}>🐝</div>
+      <div className="floating-bee" style={{ top: '45%', right: '80%' }}>🐝</div>
+      <div className="floating-bee" style={{ bottom: '25%', left: '10%' }}>🐝</div>
+      
       {/* Hero Section */}
       <section className="bg-hero py-20">
         <div className="container mx-auto px-4">

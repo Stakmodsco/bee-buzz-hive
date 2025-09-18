@@ -10,8 +10,12 @@ const Contact = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Custom 3D Flip Card Styles */}
+    <div className="min-h-screen honeycomb-overlay">
+      {/* Floating bees */}
+      <div className="floating-bee" style={{ top: '18%', right: '10%' }}>🐝</div>
+      <div className="floating-bee" style={{ top: '60%', left: '7%' }}>🐝</div>
+      <div className="floating-bee" style={{ bottom: '35%', right: '25%' }}>🐝</div>
+      
 
       {/* Full Screen Contact Section */}
       <section className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden">

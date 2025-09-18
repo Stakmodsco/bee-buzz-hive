@@ -59,7 +59,12 @@ const conservationTips = [
 
 const Conservation = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen honeycomb-overlay">
+      {/* Floating bees */}
+      <div className="floating-bee" style={{ top: '20%', right: '12%' }}>🐝</div>
+      <div className="floating-bee" style={{ top: '65%', left: '8%' }}>🐝</div>
+      <div className="floating-bee" style={{ bottom: '40%', right: '20%' }}>🐝</div>
+      
       {/* Hero Section */}
       <section className="bg-hero py-20">
         <div className="container mx-auto px-4">

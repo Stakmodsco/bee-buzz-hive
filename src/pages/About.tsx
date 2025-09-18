@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
 
 const beeSpecies = [
   {
@@ -58,9 +59,27 @@ const About = () => {
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
+
+      {/* Introduction - World of Bees with Background */}
+      <section 
+        className="py-16 relative honeycomb-overlay"
+        style={{
+          backgroundImage: `url(${goldenHourPollinators})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        
+        {/* Floating bees */}
+        <div className="floating-bee" style={{ top: '20%', left: '10%' }}>🐝</div>
+        <div className="floating-bee" style={{ top: '60%', right: '15%' }}>🐝</div>
+        <div className="floating-bee" style={{ bottom: '30%', left: '20%' }}>🐝</div>
+        
+        <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-4xl mx-auto">
             <div className="hexagon-border w-20 h-20 mx-auto mb-8">
               <div className="hexagon-content flex items-center justify-center w-full h-full">
@@ -68,13 +87,13 @@ const About = () => {
               </div>
             </div>
             
-            <h2 className="text-3xl font-bold text-center mb-8 font-['Playfair_Display']">
+            <h2 className="text-3xl font-bold text-center mb-8 font-['Playfair_Display'] text-white">
               The World of Bees
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div>
-                <p className="text-lg leading-relaxed mb-4">
+                <p className="text-lg leading-relaxed mb-4 text-white/90">
                   There are over 20,000 known species of bees worldwide, ranging from tiny 
                   stingless bees smaller than your fingernail to large carpenter bees. 
                   Each species has evolved unique characteristics and plays a vital role 
@@ -82,7 +101,7 @@ const About = () => {
                 </p>
               </div>
               <div>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed text-white/90">
                   Bees are responsible for pollinating approximately one-third of the food 
                   we eat. From almonds and apples to blueberries and coffee, these incredible 
                   insects make modern agriculture possible and support biodiversity worldwide.

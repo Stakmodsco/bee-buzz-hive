@@ -102,7 +102,12 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen honeycomb-overlay">
+      {/* Floating bees */}
+      <div className="floating-bee" style={{ top: '25%', left: '90%' }}>🐝</div>
+      <div className="floating-bee" style={{ top: '55%', left: '5%' }}>🐝</div>
+      <div className="floating-bee" style={{ bottom: '30%', right: '15%' }}>🐝</div>
+      
       {/* Hero Section */}
       <section className="bg-hero py-20">
         <div className="container mx-auto px-4">
