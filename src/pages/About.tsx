@@ -1,43 +1,283 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
 
-const beeSpecies = [
+// Import bee images
+import westernHoneyBee from "../assets/bees/western-honey-bee.jpg";
+import asianHoneyBee from "../assets/bees/asian-honey-bee.jpg";
+import giantHoneyBee from "../assets/bees/giant-honey-bee.jpg";
+import buffTailedBumblebee from "../assets/bees/buff-tailed-bumblebee.jpg";
+import commonEasternBumblebee from "../assets/bees/common-eastern-bumblebee.jpg";
+import mayanStinglessBee from "../assets/bees/mayan-stingless-bee.jpg";
+import easternCarpenterBee from "../assets/bees/eastern-carpenter-bee.jpg";
+import violetCarpenterBee from "../assets/bees/violet-carpenter-bee.jpg";
+import tawnyMiningBee from "../assets/bees/tawny-mining-bee.jpg";
+import leafcutterBee from "../assets/bees/leafcutter-bee.jpg";
+import blueOrchardMasonBee from "../assets/bees/blue-orchard-mason-bee.jpg";
+import sweatBee from "../assets/bees/sweat-bee.jpg";
+import cuckooBee from "../assets/bees/cuckoo-bee.jpg";
+import orchidBee from "../assets/bees/orchid-bee.jpg";
+
+const beeCategories = [
   {
-    name: "Honeybee",
-    scientific: "Apis mellifera",
-    description: "Social bees that live in colonies and produce honey. Essential for pollinating crops worldwide.",
-    habitat: "Hives, hollow trees",
-    diet: "Nectar, pollen",
-    conservation: "Stable",
-    facts: ["Live in colonies of up to 80,000 bees", "Can fly up to 15 mph", "Visit 2-5 million flowers to make 1 pound of honey"]
+    category: "Honey Bees",
+    genus: "Apis",
+    description: "Social bees that live in large colonies and produce honey. They are the most well-known pollinators.",
+    species: [
+      {
+        name: "Western Honey Bee",
+        scientific: "Apis mellifera",
+        description: "The most common honey bee species worldwide, essential for agriculture and honey production.",
+        habitat: "Hives, hollow trees, managed apiaries",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: westernHoneyBee,
+        facts: [
+          "Live in colonies of up to 80,000 bees",
+          "Can fly up to 15 mph",
+          "Visit 2-5 million flowers to make 1 pound of honey"
+        ]
+      },
+      {
+        name: "Asian Honey Bee",
+        scientific: "Apis cerana",
+        description: "Native to Asia, smaller than Western honey bees with natural resistance to Varroa mites.",
+        habitat: "Tree cavities, traditional hives",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: asianHoneyBee,
+        facts: [
+          "Natural resistance to Varroa destructor mites",
+          "Can absond from hives when disturbed",
+          "Traditional beekeeping species in Asia"
+        ]
+      },
+      {
+        name: "Giant Honey Bee",
+        scientific: "Apis dorsata",
+        description: "The largest honey bee species, building massive single-comb nests in the open.",
+        habitat: "High tree branches, cliff faces",
+        diet: "Nectar, pollen",
+        conservation: "Declining",
+        image: giantHoneyBee,
+        facts: [
+          "Can build combs up to 1 meter in length",
+          "Highly defensive with painful stings",
+          "Migrate seasonally following flower blooms"
+        ]
+      }
+    ]
   },
   {
-    name: "Bumblebee",
-    scientific: "Bombus species",
-    description: "Fuzzy, robust bees excellent at buzz pollination. Active in cooler temperatures than other bees.",
-    habitat: "Ground nests, gardens",
-    diet: "Nectar, pollen",
-    conservation: "Declining",
-    facts: ["Can regulate body temperature", "Excellent pollinators of tomatoes", "Queen bees hibernate through winter"]
+    category: "Bumblebees",
+    genus: "Bombus",
+    description: "Large, fuzzy bees excellent at buzz pollination. They can fly in cooler weather than other bees.",
+    species: [
+      {
+        name: "Buff-Tailed Bumblebee",
+        scientific: "Bombus terrestris",
+        description: "One of the most common European bumblebees, important for greenhouse pollination.",
+        habitat: "Gardens, fields, underground nests",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: buffTailedBumblebee,
+        facts: [
+          "Queens hibernate through winter",
+          "Excellent pollinators of tomatoes",
+          "Can regulate body temperature"
+        ]
+      },
+      {
+        name: "Common Eastern Bumblebee",
+        scientific: "Bombus impatiens",
+        description: "The most common bumblebee in eastern North America, commercially raised for pollination.",
+        habitat: "Various habitats, ground nests",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: commonEasternBumblebee,
+        facts: [
+          "Used commercially for crop pollination",
+          "Active from early spring to fall",
+          "Can buzz pollinate crops like blueberries"
+        ]
+      }
+    ]
   },
   {
-    name: "Leafcutter Bee",
-    scientific: "Megachile species", 
-    description: "Solitary bees that cut circular pieces from leaves to build their nests. Important native pollinators.",
-    habitat: "Wood, stems, soil",
-    diet: "Nectar, pollen",
-    conservation: "Stable",
-    facts: ["Cut perfect circles from leaves", "More efficient pollinators than honeybees", "Don't produce honey"]
+    category: "Stingless Bees",
+    tribe: "Meliponini",
+    description: "Tropical social bees without functional stingers, important for rainforest pollination.",
+    species: [
+      {
+        name: "Mayan Stingless Bee",
+        scientific: "Melipona beecheii",
+        description: "Sacred to the Maya civilization, producing prized medicinal honey.",
+        habitat: "Tropical forests, tree cavities",
+        diet: "Nectar, pollen",
+        conservation: "Vulnerable",
+        image: mayanStinglessBee,
+        facts: [
+          "Produces medicinal honey with antibacterial properties",
+          "Sacred to Maya culture for over 2000 years",
+          "Cannot sting but can bite"
+        ]
+      }
+    ]
   },
   {
-    name: "Mason Bee",
-    scientific: "Osmia species",
-    description: "Gentle, non-aggressive bees that use mud to build their nests. Excellent early-season pollinators.",
-    habitat: "Hollow stems, holes in wood",
-    diet: "Nectar, pollen", 
-    conservation: "Stable",
-    facts: ["Don't live in colonies", "Active in early spring", "One bee can do the work of 100 honeybees"]
+    category: "Carpenter Bees",
+    genus: "Xylocopa",
+    description: "Large, robust bees that excavate tunnels in wood for nesting. Important pollinators of open-faced flowers.",
+    species: [
+      {
+        name: "Eastern Carpenter Bee",
+        scientific: "Xylocopa virginica",
+        description: "Large black bees that drill perfectly round holes in wood for nesting.",
+        habitat: "Wooden structures, dead wood",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: easternCarpenterBee,
+        facts: [
+          "Males are harmless but territorial",
+          "Can hover like hummingbirds",
+          "Drill perfectly round 16mm holes"
+        ]
+      },
+      {
+        name: "Violet Carpenter Bee",
+        scientific: "Xylocopa violacea",
+        description: "European species with distinctive purple-violet wings and metallic sheen.",
+        habitat: "Dead wood, bamboo, wooden structures",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: violetCarpenterBee,
+        facts: [
+          "Wings have beautiful purple iridescence",
+          "Can reuse nesting tunnels for years",
+          "Important pollinators of sage and lavender"
+        ]
+      }
+    ]
+  },
+  {
+    category: "Mining Bees",
+    genus: "Andrena",
+    description: "Ground-nesting solitary bees that emerge in early spring. Important pollinators of fruit trees.",
+    species: [
+      {
+        name: "Tawny Mining Bee",
+        scientific: "Andrena fulva",
+        description: "Distinctive orange-brown females that nest in sandy soil.",
+        habitat: "Sandy soils, gardens, parks",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: tawnyMiningBee,
+        facts: [
+          "Females are bright orange-brown",
+          "Males are darker and emerge first",
+          "Important early pollinators of fruit trees"
+        ]
+      }
+    ]
+  },
+  {
+    category: "Leafcutter & Mason Bees",
+    family: "Megachilidae",
+    description: "Solitary bees that use plant materials or mud to construct nests. Highly efficient pollinators.",
+    species: [
+      {
+        name: "Leafcutter Bee",
+        scientific: "Megachile rotundata",
+        description: "Cut perfect circles from leaves to line their nest cells. More efficient pollinators than honey bees.",
+        habitat: "Hollow stems, wood cavities",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: leafcutterBee,
+        facts: [
+          "Cut perfect circles from rose leaves",
+          "More efficient pollinators than honey bees",
+          "Each female works alone"
+        ]
+      },
+      {
+        name: "Blue Orchard Mason Bee",
+        scientific: "Osmia lignaria",
+        description: "Excellent early-season pollinators with metallic blue-black coloration.",
+        habitat: "Hollow reeds, drilled wood blocks",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: blueOrchardMasonBee,
+        facts: [
+          "One bee does the work of 100 honey bees",
+          "Active in early spring",
+          "Don't live in colonies"
+        ]
+      }
+    ]
+  },
+  {
+    category: "Sweat Bees",
+    family: "Halictidae",
+    description: "Small, often metallic bees attracted to human perspiration for its salt content.",
+    species: [
+      {
+        name: "Sweat Bee",
+        scientific: "Halictus spp.",
+        description: "Small metallic green bees attracted to human sweat and important wildflower pollinators.",
+        habitat: "Ground nests, various habitats",
+        diet: "Nectar, pollen",
+        conservation: "Stable",
+        image: sweatBee,
+        facts: [
+          "Attracted to human sweat for salt",
+          "Many species have metallic coloration",
+          "Range from solitary to social"
+        ]
+      }
+    ]
+  },
+  {
+    category: "Cuckoo Bees",
+    subfamily: "Nomadinae",
+    description: "Parasitic bees that lay eggs in other bees' nests, similar to cuckoo birds.",
+    species: [
+      {
+        name: "Cuckoo Bee",
+        scientific: "Nomada spp.",
+        description: "Wasp-like parasitic bees that don't collect pollen, instead laying eggs in other bees' nests.",
+        habitat: "Areas with host bee populations",
+        diet: "Nectar (adults), host larvae (young)",
+        conservation: "Variable",
+        image: cuckooBee,
+        facts: [
+          "Don't collect pollen or build nests",
+          "Wasp-like appearance",
+          "Young develop by eating host bee larvae"
+        ]
+      }
+    ]
+  },
+  {
+    category: "Orchid Bees",
+    tribe: "Euglossini",
+    description: "Brilliantly colored tropical bees that collect orchid fragrances and are crucial rainforest pollinators.",
+    species: [
+      {
+        name: "Orchid Bee",
+        scientific: "Euglossa spp.",
+        description: "Spectacularly iridescent tropical bees that collect fragrances from orchids.",
+        habitat: "Tropical rainforests",
+        diet: "Nectar, pollen",
+        conservation: "Vulnerable",
+        image: orchidBee,
+        facts: [
+          "Males collect orchid fragrances",
+          "Brilliant metallic colors",
+          "Long tongues for deep flowers"
+        ]
+      }
+    ]
   }
 ];
 
@@ -110,65 +350,97 @@ const About = () => {
         </div>
       </section>
 
-      {/* Bee Species Grid */}
+      {/* Comprehensive Bee Species Guide */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 font-['Playfair_Display']">
-            Featured Bee Species
+            Complete Guide to Bee Species
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            {beeSpecies.map((species, index) => (
-              <Card key={species.name} className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="text-xl mb-2">{species.name}</CardTitle>
-                      <p className="text-sm text-muted-foreground italic mb-3">
-                        {species.scientific}
+          {beeCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="mb-16">
+              {/* Category Header */}
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-bee mb-2 font-['Playfair_Display']">
+                  {category.category}
+                </h3>
+                <p className="text-muted-foreground text-lg italic mb-2">
+                  {category.genus && `Genus: ${category.genus}`}
+                  {category.family && `Family: ${category.family}`}
+                  {category.tribe && `Tribe: ${category.tribe}`}
+                </p>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  {category.description}
+                </p>
+              </div>
+
+              {/* Species Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.species.map((species, speciesIndex) => (
+                  <Card key={speciesIndex} className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                    {/* Species Image */}
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={species.image} 
+                        alt={species.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <CardTitle className="text-lg mb-2">{species.name}</CardTitle>
+                          <p className="text-sm text-muted-foreground italic mb-3">
+                            {species.scientific}
+                          </p>
+                          <Badge 
+                            variant={
+                              species.conservation === "Declining" || species.conservation === "Vulnerable" 
+                                ? "destructive" 
+                                : "secondary"
+                            }
+                            className="mb-3"
+                          >
+                            {species.conservation}
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                        {species.description}
                       </p>
-                      <Badge 
-                        variant={species.conservation === "Declining" ? "destructive" : "secondary"}
-                        className="mb-3"
-                      >
-                        {species.conservation}
-                      </Badge>
-                    </div>
-                    <div className="text-3xl">{index % 2 === 0 ? "🐝" : "🐛"}</div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {species.description}
-                  </p>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
-                    <div>
-                      <strong className="text-foreground">Habitat:</strong>
-                      <p className="text-muted-foreground">{species.habitat}</p>
-                    </div>
-                    <div>
-                      <strong className="text-foreground">Diet:</strong>
-                      <p className="text-muted-foreground">{species.diet}</p>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <strong className="text-foreground text-sm">Fun Facts:</strong>
-                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                      {species.facts.map((fact, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-honey mr-2">•</span>
-                          {fact}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                      
+                      <div className="grid grid-cols-1 gap-3 mb-4 text-sm">
+                        <div>
+                          <strong className="text-foreground">Habitat:</strong>
+                          <p className="text-muted-foreground">{species.habitat}</p>
+                        </div>
+                        <div>
+                          <strong className="text-foreground">Diet:</strong>
+                          <p className="text-muted-foreground">{species.diet}</p>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <strong className="text-foreground text-sm">Fascinating Facts:</strong>
+                        <ul className="text-sm text-muted-foreground mt-2 space-y-1">
+                          {species.facts.map((fact, i) => (
+                            <li key={i} className="flex items-start">
+                              <span className="text-honey mr-2 text-xs">•</span>
+                              <span className="text-xs leading-tight">{fact}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
