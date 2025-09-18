@@ -59,8 +59,6 @@ const About = () => {
         </div>
       </section>
 
-import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
-
       {/* Introduction - World of Bees with Background */}
       <section 
         className="py-16 relative honeycomb-overlay"
