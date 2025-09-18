@@ -1,4 +1,4 @@
-# Welcome to your BeeBuzz project
+# Welcome to the BeeBuzz project
 
 ## What technologies are used for this project?
 
