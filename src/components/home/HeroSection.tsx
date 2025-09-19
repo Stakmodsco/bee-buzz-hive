@@ -2,10 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import RealisticBeeScene from "./RealisticBee3D";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[80vh] bg-hero flex items-center overflow-hidden">
+    <section 
+      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroBackground})` }}
+    >
+      {/* Dark overlay for content visibility */}
+      <div className="absolute inset-0 bg-black/40 z-5"></div>
       {/* Realistic 3D Bee */}
       <RealisticBeeScene />
       
