@@ -76,7 +76,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl">
-          <h1 className={`text-5xl md:text-7xl font-bold font-['Playfair_Display'] text-bee leading-tight mb-6 transition-all duration-1000 ease-out ${
+          <h1 className={`text-5xl md:text-7xl font-bold font-['Playfair_Display'] text-white leading-tight mb-6 transition-all duration-1000 ease-out ${
             isVisible 
               ? 'opacity-100 translate-y-0 transform' 
               : 'opacity-0 translate-y-16 transform'
@@ -92,7 +92,7 @@ const HeroSection = () => {
             }`}>of Bees</span>
           </h1>
           
-          <p className={`text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed transition-all duration-1000 ease-out delay-700 ${
+          <p className={`text-xl md:text-2xl text-white mb-8 leading-relaxed transition-all duration-1000 ease-out delay-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             Discover the fascinating lives of these incredible pollinators, 
@@ -132,15 +132,15 @@ const HeroSection = () => {
           }`}>
             <div className="text-center">
               <div className="text-3xl font-bold text-honey mb-1">20,000+</div>
-              <div className="text-sm text-muted-foreground">Bee Species</div>
+              <div className="text-sm text-white">Bee Species</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-nature mb-1">35%</div>
-              <div className="text-sm text-muted-foreground">Food Pollinated</div>
+              <div className="text-sm text-white">Food Pollinated</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-pollen mb-1">$235B</div>
-              <div className="text-sm text-muted-foreground">Economic Value</div>
+              <div className="text-sm text-white">Economic Value</div>
             </div>
           </div>
         </div>
