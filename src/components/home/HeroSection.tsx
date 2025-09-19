@@ -3,15 +3,38 @@ import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import RealisticBeeScene from "./RealisticBee3D";
 import heroBackground from "@/assets/hero-background.jpg";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    // Trigger entrance animation on component mount
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    
+    // Handle scroll events for background parallax
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section 
-      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out"
+      style={{ 
+        backgroundImage: `url(${heroBackground})`,
+        transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0005})`
+      }}
     >
       {/* Dark overlay for content visibility */}
-      <div className="absolute inset-0 bg-black/40 z-5"></div>
+      <div className={`absolute inset-0 bg-black/40 z-5 transition-opacity duration-1000 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}></div>
       {/* Realistic 3D Bee */}
       <RealisticBeeScene />
       
@@ -53,19 +76,33 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] text-bee leading-tight mb-6">
-            Welcome to the
-            <span className="text-honey block">Amazing World</span>
-            of Bees
+          <h1 className={`text-5xl md:text-7xl font-bold font-['Playfair_Display'] text-bee leading-tight mb-6 transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-y-0 transform' 
+              : 'opacity-0 translate-y-16 transform'
+          }`}>
+            <span className={`inline-block transition-all duration-1000 ease-out ${
+              isVisible ? 'translate-x-0' : '-translate-x-full'
+            }`}>Welcome to the</span>
+            <span className={`text-honey block transition-all duration-1000 ease-out delay-300 ${
+              isVisible ? 'translate-x-0' : 'translate-x-full'
+            }`}>Amazing World</span>
+            <span className={`inline-block transition-all duration-1000 ease-out delay-500 ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>of Bees</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+          <p className={`text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed transition-all duration-1000 ease-out delay-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             Discover the fascinating lives of these incredible pollinators, 
             learn about conservation efforts, and join our mission to protect 
             bee populations worldwide.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 ease-out delay-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <Button 
               asChild
               size="lg" 
@@ -90,7 +127,9 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-border/50">
+          <div className={`grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-border/50 transition-all duration-1000 ease-out delay-1200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <div className="text-center">
               <div className="text-3xl font-bold text-honey mb-1">20,000+</div>
               <div className="text-sm text-muted-foreground">Bee Species</div>
