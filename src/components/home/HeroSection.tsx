@@ -7,28 +7,21 @@ import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     // Trigger entrance animation on component mount
     const timer = setTimeout(() => setIsVisible(true), 100);
     
-    // Handle scroll events for background parallax
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <section 
-      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out"
+      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ 
-        backgroundImage: `url(${heroBackground})`,
-        transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0005})`
+        backgroundImage: `url(${heroBackground})`
       }}
     >
       {/* Dark overlay for content visibility */}
