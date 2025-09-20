@@ -19,7 +19,9 @@ const HeroSection = () => {
 
   return (
     <section 
-      className="relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      className={`relative min-h-[80vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat transition-all duration-1500 ease-out ${
+        isVisible ? 'scale-100 opacity-100' : 'scale-110 opacity-0'
+      }`}
       style={{ 
         backgroundImage: `url(${heroBackground})`
       }}
