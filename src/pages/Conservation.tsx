@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Leaf, Shield, Users } from "lucide-react";
+import HexagonBackground from "../components/ui/HexagonBackground";
 
 const conservationProjects = [
   {
@@ -59,15 +60,18 @@ const conservationTips = [
 
 const Conservation = () => {
   return (
-    <div className="min-h-screen honeycomb-overlay">
+    <div className="min-h-screen honeycomb-overlay relative">
+      <HexagonBackground density="light" />
+      
       {/* Floating bees */}
       <div className="floating-bee" style={{ top: '20%', right: '12%' }}>🐝</div>
       <div className="floating-bee" style={{ top: '65%', left: '8%' }}>🐝</div>
       <div className="floating-bee" style={{ bottom: '40%', right: '20%' }}>🐝</div>
       
       {/* Hero Section */}
-      <section className="bg-hero py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-hero py-20 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold font-['Playfair_Display'] text-bee mb-6">
               Protecting Our 
@@ -88,8 +92,9 @@ const Conservation = () => {
       </section>
 
       {/* Conservation Crisis */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-6 font-['Playfair_Display']">
               The Crisis We Face
@@ -125,8 +130,9 @@ const Conservation = () => {
       </section>
 
       {/* Active Projects */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-muted/30 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12 font-['Playfair_Display']">
             Our Conservation Projects
           </h2>
@@ -190,8 +196,9 @@ const Conservation = () => {
       </section>
 
       {/* How You Can Help */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12 font-['Playfair_Display']">
             How You Can Help
           </h2>

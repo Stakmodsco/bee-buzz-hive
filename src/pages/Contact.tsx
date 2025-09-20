@@ -5,12 +5,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, MapPin, Phone, Clock, User, MessageSquare } from "lucide-react";
 import { useState } from "react";
+import HexagonBackground from "../components/ui/HexagonBackground";
 
 const Contact = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="min-h-screen honeycomb-overlay">
+    <div className="min-h-screen honeycomb-overlay relative">
+      <HexagonBackground density="light" />
+      
       {/* Floating bees */}
       <div className="floating-bee" style={{ top: '18%', right: '10%' }}>🐝</div>
       <div className="floating-bee" style={{ top: '60%', left: '7%' }}>🐝</div>
@@ -19,11 +22,13 @@ const Contact = () => {
 
       {/* Full Screen Contact Section */}
       <section className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-honey/10 via-background to-nature/20"></div>
-        <div className="absolute inset-0 hexagon-pattern opacity-5"></div>
+        <HexagonBackground density="medium" />
         
-        <div className="container mx-auto px-4 relative z-10">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-honey/10 via-background to-nature/20 z-10"></div>
+        <div className="absolute inset-0 hexagon-pattern opacity-5 z-10"></div>
+        
+        <div className="container mx-auto px-4 relative z-20">
           <div className="flex flex-wrap items-center justify-between min-h-[80vh]">
             
             {/* Left Side - Contact Info */}
@@ -170,8 +175,9 @@ const Contact = () => {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-muted/30 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             
             {/* Office Hours & Info */}

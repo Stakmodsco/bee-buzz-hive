@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
+import HexagonBackground from "../components/ui/HexagonBackground";
 
 // Import bee images
 import westernHoneyBee from "../assets/bees/western-honey-bee.jpg";
@@ -283,10 +284,13 @@ const beeCategories = [
 
 const About = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <HexagonBackground density="light" />
+      
       {/* Hero Section */}
-      <section className="bg-hero py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-hero py-20 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold font-['Playfair_Display'] text-bee mb-6">
               About Our Amazing Bees
@@ -351,8 +355,9 @@ const About = () => {
       </section>
 
       {/* Comprehensive Bee Species Guide */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-muted/30 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12 font-['Playfair_Display']">
             Complete Guide to Bee Species
           </h2>

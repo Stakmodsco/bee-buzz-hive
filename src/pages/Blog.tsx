@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar, Clock, Search, Tag } from "lucide-react";
+import HexagonBackground from "../components/ui/HexagonBackground";
 
 const blogPosts = [
   {
@@ -102,15 +103,18 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen honeycomb-overlay">
+    <div className="min-h-screen honeycomb-overlay relative">
+      <HexagonBackground density="light" />
+      
       {/* Floating bees */}
       <div className="floating-bee" style={{ top: '25%', left: '90%' }}>🐝</div>
       <div className="floating-bee" style={{ top: '55%', left: '5%' }}>🐝</div>
       <div className="floating-bee" style={{ bottom: '30%', right: '15%' }}>🐝</div>
       
       {/* Hero Section */}
-      <section className="bg-hero py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-hero py-20 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold font-['Playfair_Display'] text-bee mb-6">
               BuzzWorld
@@ -126,8 +130,9 @@ const Blog = () => {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-16">
-          <div className="container mx-auto px-4">
+        <section className="py-16 relative">
+          <HexagonBackground density="light" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
               <Badge className="bg-honey text-bee mb-4">Featured Post</Badge>
               <Card className="overflow-hidden shadow-xl">
@@ -170,8 +175,9 @@ const Blog = () => {
       )}
 
       {/* Search and Filters */}
-      <section className="py-8 bg-muted/30 sticky top-16 z-40">
-        <div className="container mx-auto px-4">
+      <section className="py-8 bg-muted/30 sticky top-16 z-40 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto space-y-6">
             {/* Search */}
             <div className="relative">
@@ -233,8 +239,9 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.filter(post => !post.featured).map((post) => (

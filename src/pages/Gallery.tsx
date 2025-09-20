@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import HexagonBackground from "../components/ui/HexagonBackground";
 
 // Gallery images
 import honeybeeImage from "@/assets/gallery/honeybee-sunflower.jpg";
@@ -117,15 +118,18 @@ const Gallery = () => {
     : galleryImages.filter(image => image.category === selectedCategory);
 
   return (
-    <div className="min-h-screen honeycomb-overlay">
+    <div className="min-h-screen honeycomb-overlay relative">
+      <HexagonBackground density="light" />
+      
       {/* Floating bees */}
       <div className="floating-bee" style={{ top: '15%', left: '85%' }}>🐝</div>
       <div className="floating-bee" style={{ top: '45%', right: '80%' }}>🐝</div>
       <div className="floating-bee" style={{ bottom: '25%', left: '10%' }}>🐝</div>
       
       {/* Hero Section */}
-      <section className="bg-hero py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-hero py-20 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold font-['Playfair_Display'] text-bee mb-6">
               Bee Photo
@@ -140,8 +144,9 @@ const Gallery = () => {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 bg-background sticky top-16 z-40 border-b">
-        <div className="container mx-auto px-4">
+      <section className="py-8 bg-background sticky top-16 z-40 border-b relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((category) => (
               <Button
@@ -162,8 +167,9 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative">
+        <HexagonBackground density="medium" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredImages.map((image) => (
               <Card key={image.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
@@ -217,8 +223,9 @@ const Gallery = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-16 bg-muted/30 relative">
+        <HexagonBackground density="light" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-3xl font-bold mb-6 font-['Playfair_Display']">
             Share Your Bee Photos
           </h2>
