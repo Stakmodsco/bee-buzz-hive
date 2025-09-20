@@ -1,16 +1,34 @@
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
-import { useRef, useEffect, Suspense } from 'react'
+import { useRef, useEffect, Suspense, useState } from 'react'
 import * as THREE from 'three'
 import { gsap } from 'gsap'
 
 // Realistic Bee Model Component
 const RealisticBeeModel = () => {
   const group = useRef<THREE.Group>(null!)
+  const [scale, setScale] = useState<[number, number, number]>([0.9, 0.9, 0.9])
   const { scene, animations } = useGLTF(
     'https://raw.githubusercontent.com/DennysDionigi/bee-glb/94253437c023643dd868592e11a0fd2c228cfe07/demon_bee_full_texture.glb'
   )
   const { actions } = useAnimations(animations, group)
+  
+  useEffect(() => {
+    // Function to update scale based on screen size
+    const updateScale = () => {
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      setScale(isMobile ? [0.4, 0.4, 0.4] : [0.9, 0.9, 0.9]);
+    };
+
+    // Set initial scale
+    updateScale();
+
+    // Add resize listener
+    window.addEventListener('resize', updateScale);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateScale);
+  }, [])
   
   useEffect(() => {
     // Play the first animation if available
@@ -95,8 +113,9 @@ const RealisticBeeModel = () => {
     }
   })
   
+  
   return (
-    <group ref={group} scale={[0.9, 0.9, 0.9]}>
+    <group ref={group} scale={scale}>
       <primitive object={scene} />
     </group>
   )
