@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
 import HexagonBackground from "../components/ui/HexagonBackground";
-import westernHoneyBee from "@/assets/bees/western-honey-bee.jpg";
-import orchidBee from "@/assets/bees/orchid-bee.jpg";
+import realisticBeeFlight from "@/assets/realistic-bee-flight.png";
+import realisticBeeGolden from "@/assets/realistic-bee-golden.png";
 
 const NotFound = () => {
   const location = useLocation();
@@ -19,15 +19,15 @@ const NotFound = () => {
       
       {/* Floating realistic bees */}
       <img 
-        src={westernHoneyBee}
-        alt="Western Honey Bee"
-        className="floating-bee w-8 h-8 object-cover rounded-full" 
+        src={realisticBeeFlight}
+        alt="Realistic Bee in Flight"
+        className="floating-bee w-10 h-10 object-contain" 
         style={{ top: '20%', left: '15%' }}
       />
       <img 
-        src={orchidBee}
-        alt="Orchid Bee"
-        className="floating-bee w-6 h-6 object-cover rounded-full" 
+        src={realisticBeeGolden}
+        alt="Golden Honey Bee"
+        className="floating-bee w-8 h-8 object-contain" 
         style={{ top: '70%', right: '20%' }}
       />
       
@@ -39,9 +39,9 @@ const NotFound = () => {
               <span className="text-8xl md:text-9xl font-bold text-honey font-['Playfair_Display']">4</span>
               <div className="hexagon w-20 h-20 md:w-24 md:h-24 bg-honey mx-4 flex items-center justify-center">
                 <img 
-                  src={westernHoneyBee}
-                  alt="Western Honey Bee"
-                  className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full"
+                  src={realisticBeeFlight}
+                  alt="Realistic Bee in Flight"
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain"
                 />
               </div>
               <span className="text-8xl md:text-9xl font-bold text-honey font-['Playfair_Display']">4</span>

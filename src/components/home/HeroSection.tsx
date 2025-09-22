@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import westernHoneyBee from "@/assets/bees/western-honey-bee.jpg";
-import buffTailedBumblebee from "@/assets/bees/buff-tailed-bumblebee.jpg";
-import sweatBee from "@/assets/bees/sweat-bee.jpg";
+import realisticBeeFlight from "@/assets/realistic-bee-flight.png";
+import realisticBeeGolden from "@/assets/realistic-bee-golden.png";
+import realisticBeeBumble from "@/assets/realistic-bee-bumble.png";
 import heroBackground from "@/assets/hero-background.jpg";
 import { useEffect, useState } from "react";
 
@@ -54,20 +54,20 @@ const HeroSection = () => {
 
         {/* Realistic Animated Bees */}
         <img 
-          src={westernHoneyBee}
-          alt="Western Honey Bee"
-          className="bee absolute top-20 right-10 w-12 h-12 object-cover rounded-full opacity-70 animate-fly"
+          src={realisticBeeFlight}
+          alt="Realistic Bee in Flight"
+          className="bee absolute top-20 right-10 w-16 h-16 object-contain opacity-70 animate-fly"
         />
         <img 
-          src={buffTailedBumblebee}
-          alt="Buff-tailed Bumblebee"
-          className="bee absolute bottom-32 left-1/4 w-8 h-8 object-cover rounded-full opacity-60 animate-hover"
+          src={realisticBeeGolden}
+          alt="Golden Honey Bee"
+          className="bee absolute bottom-32 left-1/4 w-12 h-12 object-contain opacity-60 animate-hover"
           style={{ animationDelay: '0.5s' }}
         />
         <img 
-          src={sweatBee}
-          alt="Sweat Bee"
-          className="bee absolute top-60 right-1/3 w-10 h-10 object-cover rounded-full opacity-50 animate-fly"
+          src={realisticBeeBumble}
+          alt="Realistic Bumble Bee"
+          className="bee absolute top-60 right-1/3 w-14 h-14 object-contain opacity-50 animate-fly"
           style={{ animationDelay: '2s' }}
         />
       </div>
