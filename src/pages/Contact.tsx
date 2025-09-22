@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, MapPin, Phone, Clock, User, MessageSquare } from "lucide-react";
 import { useState } from "react";
 import HexagonBackground from "../components/ui/HexagonBackground";
+import goldenBee from "../assets/golden-bee.png";
 
 const Contact = () => {
   const [showForm, setShowForm] = useState(false);
@@ -15,9 +16,9 @@ const Contact = () => {
       <HexagonBackground density="light" />
       
       {/* Floating bees */}
-      <div className="floating-bee" style={{ top: '18%', right: '10%' }}>🐝</div>
-      <div className="floating-bee" style={{ top: '60%', left: '7%' }}>🐝</div>
-      <div className="floating-bee" style={{ bottom: '35%', right: '25%' }}>🐝</div>
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '18%', right: '10%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '60%', left: '7%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ bottom: '35%', right: '25%' }} />
       
 
       {/* Full Screen Contact Section */}

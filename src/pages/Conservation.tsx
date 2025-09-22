@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Leaf, Shield, Users } from "lucide-react";
 import HexagonBackground from "../components/ui/HexagonBackground";
+import goldenBee from "../assets/golden-bee.png";
 
 const conservationProjects = [
   {
@@ -64,9 +65,9 @@ const Conservation = () => {
       <HexagonBackground density="light" />
       
       {/* Floating bees */}
-      <div className="floating-bee" style={{ top: '20%', right: '12%' }}>🐝</div>
-      <div className="floating-bee" style={{ top: '65%', left: '8%' }}>🐝</div>
-      <div className="floating-bee" style={{ bottom: '40%', right: '20%' }}>🐝</div>
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '20%', right: '12%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '65%', left: '8%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ bottom: '40%', right: '20%' }} />
       
       {/* Hero Section */}
       <section className="bg-hero py-20 relative">

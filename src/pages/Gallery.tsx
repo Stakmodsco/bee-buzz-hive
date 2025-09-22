@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HexagonBackground from "../components/ui/HexagonBackground";
+import goldenBee from "../assets/golden-bee.png";
 
 // Gallery images
 import honeybeeImage from "@/assets/gallery/honeybee-sunflower.jpg";
@@ -122,9 +123,9 @@ const Gallery = () => {
       <HexagonBackground density="light" />
       
       {/* Floating bees */}
-      <div className="floating-bee" style={{ top: '15%', left: '85%' }}>🐝</div>
-      <div className="floating-bee" style={{ top: '45%', right: '80%' }}>🐝</div>
-      <div className="floating-bee" style={{ bottom: '25%', left: '10%' }}>🐝</div>
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '15%', left: '85%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '45%', right: '80%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ bottom: '25%', left: '10%' }} />
       
       {/* Hero Section */}
       <section className="bg-hero py-20 relative">

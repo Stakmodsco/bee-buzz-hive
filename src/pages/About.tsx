@@ -5,6 +5,7 @@ import goldenHourPollinators from "../assets/golden-hour-pollinators.jpg";
 import HexagonBackground from "../components/ui/HexagonBackground";
 
 // Import bee images
+import goldenBee from "../assets/golden-bee.png";
 import westernHoneyBee from "../assets/bees/western-honey-bee.jpg";
 import asianHoneyBee from "../assets/bees/asian-honey-bee.jpg";
 import giantHoneyBee from "../assets/bees/giant-honey-bee.jpg";
@@ -317,9 +318,9 @@ const About = () => {
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         
         {/* Floating bees */}
-        <div className="floating-bee" style={{ top: '20%', left: '10%' }}>🐝</div>
-        <div className="floating-bee" style={{ top: '60%', right: '15%' }}>🐝</div>
-        <div className="floating-bee" style={{ bottom: '30%', left: '20%' }}>🐝</div>
+        <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '20%', left: '10%' }} />
+        <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '60%', right: '15%' }} />
+        <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ bottom: '30%', left: '20%' }} />
         
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-4xl mx-auto">

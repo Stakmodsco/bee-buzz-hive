@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar, Clock, Search, Tag } from "lucide-react";
 import HexagonBackground from "../components/ui/HexagonBackground";
+import goldenBee from "../assets/golden-bee.png";
 
 const blogPosts = [
   {
@@ -107,9 +108,9 @@ const Blog = () => {
       <HexagonBackground density="light" />
       
       {/* Floating bees */}
-      <div className="floating-bee" style={{ top: '25%', left: '90%' }}>🐝</div>
-      <div className="floating-bee" style={{ top: '55%', left: '5%' }}>🐝</div>
-      <div className="floating-bee" style={{ bottom: '30%', right: '15%' }}>🐝</div>
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '25%', left: '90%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ top: '55%', left: '5%' }} />
+      <img src={goldenBee} alt="Golden Honey Bee" className="floating-bee w-8 h-8 object-contain" style={{ bottom: '30%', right: '15%' }} />
       
       {/* Hero Section */}
       <section className="bg-hero py-20 relative">
