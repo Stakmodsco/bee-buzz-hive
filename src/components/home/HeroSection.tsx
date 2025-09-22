@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import RealisticBeeScene from "./RealisticBee3D";
+import westernHoneyBee from "@/assets/bees/western-honey-bee.jpg";
+import buffTailedBumblebee from "@/assets/bees/buff-tailed-bumblebee.jpg";
+import sweatBee from "@/assets/bees/sweat-bee.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
 import { useEffect, useState } from "react";
 
@@ -30,8 +32,6 @@ const HeroSection = () => {
       <div className={`absolute inset-0 bg-black/40 z-5 transition-opacity duration-1000 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}></div>
-      {/* Realistic 3D Bee */}
-      <RealisticBeeScene />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-10">
@@ -52,20 +52,24 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Simplified 2D Animated Bees */}
-        <div className="bee absolute top-20 right-10 text-4xl animate-fly opacity-70">🐝</div>
-        <div 
-          className="bee absolute bottom-32 left-1/4 text-2xl animate-hover opacity-60"
+        {/* Realistic Animated Bees */}
+        <img 
+          src={westernHoneyBee}
+          alt="Western Honey Bee"
+          className="bee absolute top-20 right-10 w-12 h-12 object-cover rounded-full opacity-70 animate-fly"
+        />
+        <img 
+          src={buffTailedBumblebee}
+          alt="Buff-tailed Bumblebee"
+          className="bee absolute bottom-32 left-1/4 w-8 h-8 object-cover rounded-full opacity-60 animate-hover"
           style={{ animationDelay: '0.5s' }}
-        >
-          🐝
-        </div>
-        <div 
-          className="bee absolute top-60 right-1/3 text-3xl animate-fly opacity-50"
+        />
+        <img 
+          src={sweatBee}
+          alt="Sweat Bee"
+          className="bee absolute top-60 right-1/3 w-10 h-10 object-cover rounded-full opacity-50 animate-fly"
           style={{ animationDelay: '2s' }}
-        >
-          🐝
-        </div>
+        />
       </div>
 
       {/* Content */}

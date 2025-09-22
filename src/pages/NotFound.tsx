@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
 import HexagonBackground from "../components/ui/HexagonBackground";
+import westernHoneyBee from "@/assets/bees/western-honey-bee.jpg";
+import orchidBee from "@/assets/bees/orchid-bee.jpg";
 
 const NotFound = () => {
   const location = useLocation();
@@ -15,9 +17,19 @@ const NotFound = () => {
     <div className="min-h-screen bg-hero relative flex items-center justify-center">
       <HexagonBackground density="light" />
       
-      {/* Floating bees */}
-      <div className="floating-bee" style={{ top: '20%', left: '15%' }}>🐝</div>
-      <div className="floating-bee" style={{ top: '70%', right: '20%' }}>🐝</div>
+      {/* Floating realistic bees */}
+      <img 
+        src={westernHoneyBee}
+        alt="Western Honey Bee"
+        className="floating-bee w-8 h-8 object-cover rounded-full" 
+        style={{ top: '20%', left: '15%' }}
+      />
+      <img 
+        src={orchidBee}
+        alt="Orchid Bee"
+        className="floating-bee w-6 h-6 object-cover rounded-full" 
+        style={{ top: '70%', right: '20%' }}
+      />
       
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-2xl mx-auto">
@@ -26,7 +38,11 @@ const NotFound = () => {
             <div className="inline-flex items-center justify-center">
               <span className="text-8xl md:text-9xl font-bold text-honey font-['Playfair_Display']">4</span>
               <div className="hexagon w-20 h-20 md:w-24 md:h-24 bg-honey mx-4 flex items-center justify-center">
-                <span className="text-3xl md:text-4xl">🐝</span>
+                <img 
+                  src={westernHoneyBee}
+                  alt="Western Honey Bee"
+                  className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full"
+                />
               </div>
               <span className="text-8xl md:text-9xl font-bold text-honey font-['Playfair_Display']">4</span>
             </div>
